@@ -6,6 +6,7 @@ Release:	2
 License:	GPL
 Group:		X11/Applications
 Source0:	http://www.netcom.com/~spoon/gnotes/%{name}-%{version}.tar.bz2
+# Source0-md5:	53e841f47836e3f554b10c996844a14d
 URL:		http://www.netcom.com/~spoon/gnotes/
 BuildRequires:	gnome-libs-devel >= 1.0.0
 BuildRequires:	ORBit-devel >= 0.4.0
