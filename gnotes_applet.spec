@@ -1,65 +1,53 @@
-# Note that this is NOT a relocatable package
-%define ver      1.64
-%define rel      1
-%define prefix   /usr
+Summary:	A Panel Applet for the GNOME GUI desktop environment.
+Name:		gnotes_applet
+Version:	1.64
+Release:	1
+License:	GPL
+Group:		Applications/Productivity
+Source:		http://www.netcom.com/~spoon/gnotes/%{name}-%{version}.tar.bz2
+URL:		http://www.netcom.com/~spoon/gnotes/
+BuildRequires:	gnome-libs-devel >= 1.0.0
+BuildRequires:	ORBit-devel >= 0.4.0
+BuildRequires:	gettext-devel
+BuildRoot:	/tmp/%{name}-%{version}-root
 
-Summary: A Panel Applet for the GNOME GUI desktop environment.
-Name: gnotes_applet
-Version: %ver
-Release: %rel
-Copyright: LGPL
-Group: Applications/Productivity
-Source: http://www.netcom.com/~spoon/gnotes/gnotes_applet-%{ver}.tar.gz
-BuildRoot: /var/tmp/gnotes_applet-root
-# Obsoletes: 
-
-URL: http://www.netcom.com/~spoon/gnotes/
-Prereq: /sbin/install-info
-Docdir: %{prefix}/doc
-
-Requires: gnome-libs >= 1.0.0
-Requires: ORBit >= 0.4.0
+%define		_prefix		/usr/X11R6
+%define		_sysconfdir	/etc/X11
 
 %description
-GNotes 
+GNotes is a GNOME Panel Applet that allows you to place cool little yellow
+sticky notes all over your desktop. The notes are similar to those little
+yellow paper sticky notes that are plastered around the edges of your
+monitor.
 
-%changelog
+GNotes are a GREEN (environmentally friendly) alternative to those paper
+sticky notes. GNotes are 100% virtual, 100% paper free, and constructed of
+100% recycled pixels.
 
 %prep
-%setup
+%setup -q
 
 %build
-# Needed for snapshot releases.
-%ifarch alpha
-  MYARCH_FLAGS="--host=alpha-redhat-linux"
-%endif
-MYCFLAGS="$RPM_OPT_FLAGS"
-
-if [ ! -f configure ]; then
-  CFLAGS="$MYCFLAGS" ./autogen.sh $MYARCH_FLAGS --prefix=%prefix --sysconfdir=/etc --localstatedir=/var/lib
-else
-  CFLAGS="$MYCFLAGS" ./configure $MYARCH_FLAGS --prefix=%prefix --sysconfdir=/etc --localstatedir=/var/lib
-fi
-
-if [ "$SMP" != "" ]; then
-  (make "MAKE=make -k -j $SMP"; exit 0)
-  make
-else
-  make
-fi
+gettextize --copy --force
+LDFLAGS="-s"; export LDFLAGS
+%configure
+make
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-make prefix=$RPM_BUILD_ROOT%{prefix} sysconfdir=$RPM_BUILD_ROOT/etc install
+make install DESTDIR=$RPM_BUILD_ROOT
+
+gzip -9nf AUTHORS ChangeLog NEWS README
+
+%find_lang %{name}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%files
-%defattr(-, root, root)
-
-%doc AUTHORS COPYING ChangeLog NEWS README
+%files -f %{name}.lang
+%defattr(644,root,root,755)
+%doc *.gz
 %config /etc
-%{prefix}/bin
-%{prefix}/share
+%attr(755,root,root) %{_bindir}/*
+%{_datadir}/applets/Utility/*
