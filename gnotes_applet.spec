@@ -47,8 +47,6 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__make} install DESTDIR=$RPM_BUILD_ROOT
 
-gzip -9nf AUTHORS ChangeLog NEWS README
-
 %find_lang %{name}
 
 %clean
@@ -56,7 +54,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc *.gz
+%doc AUTHORS ChangeLog NEWS README
 %config /etc
 %attr(755,root,root) %{_bindir}/*
 %{_datadir}/applets/Utility/*
