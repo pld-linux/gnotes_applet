@@ -38,7 +38,7 @@ sk³adaj± siê w 100% ze zdatnych do ponownego u¿ycia pikseli.
 %setup -q
 
 %build
-gettextize --copy --force
+%{__gettextize}
 %configure
 %{__make}
 
