@@ -8,12 +8,18 @@ Group:		X11/Applications
 Source0:	http://www.netcom.com/~spoon/gnotes/%{name}-%{version}.tar.bz2
 # Source0-md5:	53e841f47836e3f554b10c996844a14d
 URL:		http://www.netcom.com/~spoon/gnotes/
-BuildRequires:	gnome-libs-devel >= 1.0.0
 BuildRequires:	ORBit-devel >= 0.4.0
+BuildRequires:	autoconf
+BuildRequires:	automake
 BuildRequires:	gettext-devel
+BuildRequires:	gnome-core-devel >= 1.0.0
+BuildRequires:	gnome-libs-devel >= 1.0.0
+BuildRequires:	libtool
+BuildRequires:	libxml-devel
+BuildRequires:	sed >= 4.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define		_sysconfdir	/etc/X11
+%define		_sysconfdir	/etc/X11/GNOME
 
 %description
 GNotes is a GNOME Panel Applet that allows you to place cool little
@@ -37,24 +43,35 @@ sk³adaj± siê w 100% ze zdatnych do ponownego u¿ycia pikseli.
 %prep
 %setup -q
 
+sed -i -e '/AM_CONDITIONAL(FALSE/d' configure.in
+
 %build
 %{__gettextize}
-%configure
+%{__libtoolize}
+%{__aclocal} -I macros
+%{__autoconf}
+%{__autoheader}
+%{__automake}
+# empty LINGUAS - no translations in any *.po (just empty msgstrs)
+%configure \
+	LINGUAS=""
 %{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%{__make} install DESTDIR=$RPM_BUILD_ROOT
+%{__make} install \
+	DESTDIR=$RPM_BUILD_ROOT
 
-%find_lang %{name}
+#%find_lang %{name}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%files -f %{name}.lang
+%files
+# -f %{name}.lang
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README
-%config /etc
 %attr(755,root,root) %{_bindir}/*
+%{_sysconfdir}/CORBA/servers/gnotes_applet.gnorba
 %{_datadir}/applets/Utility/*
