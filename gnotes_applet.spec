@@ -31,7 +31,7 @@ sticky notes. GNotes are 100% virtual, 100% paper free, and constructed of
 gettextize --copy --force
 LDFLAGS="-s"; export LDFLAGS
 %configure
-make
+%{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
