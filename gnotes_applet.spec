@@ -1,7 +1,7 @@
 Summary:	A Panel Applet for the GNOME GUI desktop environment.
 Name:		gnotes_applet
 Version:	1.64
-Release:	1
+Release:	2
 License:	GPL
 Group:		Applications/Productivity
 Source:		http://www.netcom.com/~spoon/gnotes/%{name}-%{version}.tar.bz2
