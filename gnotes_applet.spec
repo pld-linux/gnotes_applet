@@ -12,7 +12,6 @@ BuildRequires:	ORBit-devel >= 0.4.0
 BuildRequires:	gettext-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define		_prefix		/usr/X11R6
 %define		_sysconfdir	/etc/X11
 
 %description
