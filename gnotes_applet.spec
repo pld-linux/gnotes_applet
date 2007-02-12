@@ -1,5 +1,5 @@
 Summary:	GNotes - a Panel Applet for the GNOME GUI desktop environment
-Summary(pl):	GNotes - aplet dla panelu GNOME
+Summary(pl.UTF-8):   GNotes - aplet dla panelu GNOME
 Name:		gnotes_applet
 Version:	1.64
 Release:	2
@@ -31,14 +31,14 @@ GNotes are a GREEN (environmentally friendly) alternative to those
 paper sticky notes. GNotes are 100% virtual, 100% paper free, and
 constructed of 100% recycled pixels.
 
-%description -l pl
-GNotes to aplet panelu GNOME pozwalaj±cy umieszczaæ ma³e ¿ó³te notatki
-na ca³ym desktopie. Te notatki s± podobne do ¿ó³tych karteczek
-przyklejanych naoko³o monitora.
+%description -l pl.UTF-8
+GNotes to aplet panelu GNOME pozwalajÄ…cy umieszczaÄ‡ maÅ‚e Å¼Ã³Å‚te notatki
+na caÅ‚ym desktopie. Te notatki sÄ… podobne do Å¼Ã³Å‚tych karteczek
+przyklejanych naokoÅ‚o monitora.
 
-GNotes s± zielon± (przyjazn± dla ¶rodowiska) alternatyw± dla
-papierowych notatek. S± w 100% wirtualne, w 100% wolne od papieru i
-sk³adaj± siê w 100% ze zdatnych do ponownego u¿ycia pikseli.
+GNotes sÄ… zielonÄ… (przyjaznÄ… dla Å›rodowiska) alternatywÄ… dla
+papierowych notatek. SÄ… w 100% wirtualne, w 100% wolne od papieru i
+skÅ‚adajÄ… siÄ™ w 100% ze zdatnych do ponownego uÅ¼ycia pikseli.
 
 %prep
 %setup -q
