@@ -1,5 +1,5 @@
 Summary:	GNotes - a Panel Applet for the GNOME GUI desktop environment
-Summary(pl.UTF-8):   GNotes - aplet dla panelu GNOME
+Summary(pl.UTF-8):	GNotes - aplet dla panelu GNOME
 Name:		gnotes_applet
 Version:	1.64
 Release:	2
