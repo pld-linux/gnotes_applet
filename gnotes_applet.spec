@@ -11,7 +11,7 @@ URL:		http://www.netcom.com/~spoon/gnotes/
 BuildRequires:	ORBit-devel >= 0.4.0
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	gettext-devel
+BuildRequires:	gettext-tools
 BuildRequires:	gnome-core-devel >= 1.0.0
 BuildRequires:	gnome-libs-devel >= 1.0.0
 BuildRequires:	libtool
